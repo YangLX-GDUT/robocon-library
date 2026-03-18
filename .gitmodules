@@ -1,0 +1,6 @@
+[submodule "Third_Party/CMSIS-DSP"]
+	path = Third_Party/CMSIS-DSP
+	url = https://github.com/ARM-software/CMSIS-DSP.git
+[submodule "Third_Party/TLSF"]
+	path = Third_Party/TLSF
+	url = https://github.com/mattconte/tlsf.git

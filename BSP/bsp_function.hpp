@@ -1,0 +1,153 @@
+#ifndef BSP_FUNCTION_HPP
+#define BSP_FUNCTION_HPP
+
+#include "bsp_type_traits.hpp"
+#include <cstddef>
+#include <exception>
+#include <new>
+#include <type_traits>
+#include <utility>
+
+namespace gdut {
+
+template <typename T, std::size_t StorageSize, std::size_t Alignment>
+class basic_function {
+  static_assert(always_false_v<T>, "basic_function is a base class template "
+                                   "and cannot be instantiated directly.");
+};
+
+template <typename R, typename... Args, std::size_t StorageSize,
+          std::size_t Alignment>
+class basic_function<R(Args...), StorageSize, Alignment> {
+  static_assert(is_power_of_two_v<Alignment>,
+                "Alignment must be a power of two.");
+
+public:
+  basic_function() noexcept = default;
+  basic_function(std::nullptr_t) noexcept {}
+
+  basic_function(const basic_function &other) {
+    if (other.m_callable) {
+      other.m_callable->clone(m_storage);
+      m_callable = std::launder(reinterpret_cast<callable *>(m_storage));
+    }
+  }
+
+  template <typename Func, typename = std::enable_if_t<!std::is_same_v<
+                               std::decay_t<Func>, basic_function>>>
+  basic_function(Func &&func) {
+    static_assert(
+        sizeof(model<std::decay_t<Func>>) <= StorageSize,
+        "The function object is too large and exceeds the storage space.");
+    static_assert(std::is_invocable_r_v<R, std::decay_t<Func>, Args...>,
+                  "The function object must be callable and match the "
+                  "specified function signature.");
+    static_assert(alignof(model<std::decay_t<Func>>) <= Alignment,
+                  "The function object requires stricter alignment than "
+                  "storage provides.");
+    new (m_storage) model<std::decay_t<Func>>{std::forward<Func>(func)};
+    m_callable = std::launder(reinterpret_cast<callable *>(m_storage));
+  }
+
+  basic_function(basic_function &&other) noexcept {
+    if (other.m_callable) {
+      other.m_callable->move(m_storage);
+      m_callable = std::launder(reinterpret_cast<callable *>(m_storage));
+      other.destroy();
+    }
+  }
+
+  ~basic_function() noexcept { destroy(); }
+
+  bool valid() const noexcept { return m_callable != nullptr; }
+
+  R operator()(Args... args) {
+    if (!valid()) {
+      std::terminate();
+    }
+    return (*m_callable)(std::forward<Args>(args)...);
+  }
+
+  explicit operator bool() const noexcept { return valid(); }
+
+  basic_function &operator=(const basic_function &other) {
+    if (this != std::addressof(other)) {
+      destroy();
+      if (other.m_callable) {
+        other.m_callable->clone(m_storage);
+        m_callable = std::launder(reinterpret_cast<callable *>(m_storage));
+      }
+    }
+    return *this;
+  }
+
+  basic_function &operator=(basic_function &&other) noexcept {
+    if (this != std::addressof(other)) {
+      destroy();
+      if (other.m_callable) {
+        other.m_callable->move(m_storage);
+        m_callable = std::launder(reinterpret_cast<callable *>(m_storage));
+        other.destroy();
+      }
+    }
+    return *this;
+  }
+
+  void swap(basic_function &other) noexcept {
+    if (this == std::addressof(other)) {
+      return;
+    }
+    basic_function tmp(std::move(other));
+    other = std::move(*this);
+    *this = std::move(tmp);
+  }
+
+  friend void swap(basic_function &lhs, basic_function &rhs) noexcept {
+    lhs.swap(rhs);
+  }
+
+protected:
+  struct callable {
+    virtual R operator()(Args... args) = 0;
+    virtual void clone(std::byte *storage) = 0;
+    virtual void move(std::byte *storage) noexcept = 0;
+    virtual ~callable() = default;
+  };
+
+  template <typename Func> struct model : callable {
+    Func func;
+
+    model(const Func &fn) : func(fn) {}
+    model(Func &&fn) : func(std::move(fn)) {}
+
+    R operator()(Args... args) override {
+      return func(std::forward<Args>(args)...);
+    }
+    void clone(std::byte *storage) override {
+      new (storage) model<Func>(*this);
+    }
+    void move(std::byte *storage) noexcept override {
+      new (storage) model<Func>(std::move(*this));
+    }
+    ~model() override = default;
+  };
+
+  void destroy() noexcept {
+    if (m_callable) {
+      m_callable->~callable();
+      m_callable = nullptr;
+    }
+  }
+
+private:
+  callable *m_callable{nullptr};
+  alignas(Alignment) std::byte m_storage[StorageSize]{};
+};
+
+template <typename Func, std::size_t StorageSize = 16,
+          std::size_t Alignment = alignof(std::max_align_t)>
+using function = basic_function<Func, StorageSize, Alignment>;
+
+} // namespace gdut
+
+#endif // BSP_FUNCTION_HPP
