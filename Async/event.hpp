@@ -1,11 +1,11 @@
-#ifndef BSP_EVENT_HPP
-#define BSP_EVENT_HPP
+#ifndef ASYNC_EVENT_HPP
+#define ASYNC_EVENT_HPP
 
 #include <chrono>
 #include <cmsis_os2.h>
 #include <utility>
 
-#include "bsp_type_traits.hpp"
+#include "../BSP/bsp_utility.hpp"
 
 namespace gdut {
 
@@ -89,4 +89,4 @@ private:
 
 } // namespace gdut
 
-#endif // BSP_EVENT_HPP
+#endif // ASYNC_EVENT_HPP

@@ -27,7 +27,10 @@ add_library(GDUT_RC_Library
 )
 target_include_directories(GDUT_RC_Library PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/BSP
+  ${CMAKE_CURRENT_SOURCE_DIR}/Async
+  ${CMAKE_CURRENT_SOURCE_DIR}/Components
   ${CMAKE_CURRENT_SOURCE_DIR}/DSP
+  ${CMAKE_CURRENT_SOURCE_DIR}/Modules
   ${CMAKE_CURRENT_SOURCE_DIR}/Third_Party/TLSF
 )
 target_link_libraries(GDUT_RC_Library PUBLIC

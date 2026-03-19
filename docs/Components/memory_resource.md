@@ -1,4 +1,4 @@
-# BSP 内存资源模块（bsp_memory_resource.hpp）
+# Components 内存资源模块（memory_resource.hpp）
 
 ## 原理
 该模块提供一组基于 C++17 `std::pmr::memory_resource` 的内存资源实现，适用于 FreeRTOS 与 CMSIS-RTOS2 环境。提供统一的 PMR 接口进行内存分配与释放，支持多种分配策略（堆分配、TLSF 内存池、RTOS 内存池、静态固定块）。
@@ -34,7 +34,7 @@
 
 **使用示例：**
 ```cpp
-#include "bsp_memory_resource.hpp"
+#include "memory_resource.hpp"
 
 void use_freertos_heap() {
     // 获取 FreeRTOS 堆资源（单例）
@@ -534,4 +534,4 @@ private:
 };
 ```
 
-相关源码：[Middlewares/GDUT_RC_Library/BSP/bsp_memory_resource.hpp](../../Middlewares/GDUT_RC_Library/BSP/bsp_memory_resource.hpp)
+相关源码：[Middlewares/GDUT_RC_Library/Components/memory_resource.hpp](../../Middlewares/GDUT_RC_Library/Components/memory_resource.hpp)

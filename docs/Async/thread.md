@@ -1,4 +1,4 @@
-# BSP 线程模块（bsp_thread.hpp）
+# Async 线程模块（thread.hpp）
 
 ## 原理
 该模块对 CMSIS-RTOS2 线程进行 C++ RAII 封装，提供类似 `std::thread` 的接口，支持自动资源管理、线程同步和优先级配置。
@@ -23,7 +23,7 @@
 
 ### 基础使用
 ```cpp
-#include "bsp_thread.hpp"
+#include "thread.hpp"
 
 void task_function() {
     // 任务逻辑
@@ -458,4 +458,4 @@ void monitor_threads() {
 }
 ```
 
-相关源码：[Middlewares/GDUT_RC_Library/BSP/bsp_thread.hpp](../../Middlewares/GDUT_RC_Library/BSP/bsp_thread.hpp)
+相关源码：[Middlewares/GDUT_RC_Library/Async/thread.hpp](../../Middlewares/GDUT_RC_Library/Async/thread.hpp)

@@ -1,13 +1,13 @@
-# BSP 类型工具与硬件映射模块（bsp_type_traits.hpp）
+# BSP 类型工具与硬件映射模块（bsp_utility.hpp）
 
 ## 原理
-该模块提供一组编译期类型工具、GPIO 端口枚举、定时器 ID 枚举、以及硬件资源映射函数，确保类型安全并避免魔法数。还包含时间转换工具函数，用于 CMSIS-RTOS2 超时处理。
+该模块提供 GPIO 端口枚举、定时器 ID 枚举、以及硬件资源映射函数，确保类型安全并避免魔法数。还包含时间转换工具函数，用于 CMSIS-RTOS2 超时处理。与硬件无关的编译期类型工具已拆分至 `Components/utils_type_traits.hpp`。
 
 ## 核心设计
 
 ### 编译期类型工具
-- `is_power_of_two<N>`：检查数值是否为 2 的幂
-- `always_false<T>`：用于 `static_assert` 的延迟失败机制
+- `is_power_of_two<N>`：检查数值是否为 2 的幂（位于 `Components/utils_type_traits.hpp`）
+- `always_false<T>`：用于 `static_assert` 的延迟失败机制（位于 `Components/utils_type_traits.hpp`）
 
 ### 硬件资源枚举
 - `gpio_port`：GPIO 端口枚举（A-I）
@@ -28,7 +28,7 @@
 
 ### GPIO 端口映射
 ```cpp
-#include "bsp_type_traits.hpp"
+#include "bsp_utility.hpp"
 
 void configure_gpio() {
     // 使用强类型枚举获取 GPIO 端口
@@ -99,6 +99,8 @@ void use_time_conversion() {
 
 ### 编译期类型检查
 ```cpp
+#include "utils_type_traits.hpp"
+
 // 检查数值是否为 2 的幂
 static_assert(gdut::is_power_of_two_v<16>, "16 is a power of 2");
 static_assert(gdut::is_power_of_two_v<128>, "128 is a power of 2");
@@ -437,4 +439,4 @@ static uint8_t uart_rx_buffer[256];
 static uint16_t adc_values[128];
 ```
 
-相关源码：[Middlewares/GDUT_RC_Library/BSP/bsp_type_traits.hpp](../../Middlewares/GDUT_RC_Library/BSP/bsp_type_traits.hpp)
+相关源码：[Middlewares/GDUT_RC_Library/BSP/bsp_utility.hpp](../../Middlewares/GDUT_RC_Library/BSP/bsp_utility.hpp)

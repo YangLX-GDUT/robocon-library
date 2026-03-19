@@ -7,9 +7,9 @@
 #include "stm32f4xx_hal_uart.h"
 
 #include "bsp_dma.hpp"
-#include "bsp_function.hpp"
-#include "bsp_type_traits.hpp"
-#include "bsp_uncopyable.hpp"
+#include "function.hpp"
+#include "bsp_utility.hpp"
+#include "uncopyable.hpp"
 
 #include <chrono>
 #include <cstdint>

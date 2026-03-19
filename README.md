@@ -106,7 +106,9 @@ cmake-gui .
 |------|------|
 | [代码规范.md](./docs/代码规范.md) | **必读** - 详细的代码规范和开发规范，包括命名约定、类型安全、内存管理等 |
 | [VS_Code_Configuration.md](./docs/VS_Code_Configuration.md) | **必读** - VS Code 开发环境配置，包括 OpenOCD 调试器安装、调试配置等 |
-| [docs/BSP/](./docs/BSP/) | 硬件抽象层文档（UART、SPI、CAN 等） |
+| [docs/BSP/](./docs/BSP/) | 硬件抽象层文档（UART、SPI、CAN、TIM、GPIO 等） |
+| [docs/Async/](./docs/Async/) | 异步与 RTOS 抽象文档（线程、互斥锁、信号量、事件、消息队列） |
+| [docs/Components/](./docs/Components/) | 通用组件文档（function、uncopyable、clock、memory_resource） |
 
 ### 代码规范快速参考
 
@@ -134,12 +136,12 @@ cmake-gui .
 
 本项目使用组内维护的 `GDUT_RC_Library` 作为主要的嵌入式库，提供：
 
-- **硬件抽象层（BSP）**：UART、SPI、CAN、GPIO 等通用驱动接口
-- **数据结构**：环形缓冲区、消息队列、互斥锁、信号量等
-- **工具函数**：类型特性、内存管理辅助等
+- **硬件抽象层（BSP）**：UART、SPI、CAN、GPIO、TIM 等硬件驱动接口
+- **异步抽象层（Async）**：线程、互斥锁、信号量、事件标志、消息队列
+- **组件层（Components）**：函数对象、不可拷贝基类、时钟与内存资源等通用组件
 - **性能优化**：针对 STM32 的特化实现
 
-详见 `Middlewares/GDUT_RC_Library/` 和 `docs/BSP/`。
+详见 `Middlewares/GDUT_RC_Library/`、`docs/BSP/`、`docs/Async/` 和 `docs/Components/`。
 
 ### FreeRTOS 实时操作系统
 
@@ -207,7 +209,9 @@ void my_task(void* pvParameters) {
 2. **[VS_Code_Configuration.md](./docs/VS_Code_Configuration.md)** - 配置开发环境
 3. **[代码规范.md](./docs/代码规范.md)** - 学习编码规范
 4. **[docs/BSP/](./docs/BSP/)** - 了解硬件抽象层接口（按需）
-5. **[docs/DSP/](./docs/DSP/)** - 了解数字信号处理接口（按需）
+5. **[docs/Async/](./docs/Async/)** - 了解异步与 RTOS 抽象接口（按需）
+6. **[docs/Components/](./docs/Components/)** - 了解通用组件接口（按需）
+7. **[docs/DSP/](./docs/DSP/)** - 了解数字信号处理接口（按需）
 
 ## 🔗 外部资源
 

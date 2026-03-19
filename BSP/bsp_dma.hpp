@@ -6,9 +6,9 @@
 #include "stm32f4xx_hal_i2c.h"
 #include "stm32f4xx_hal_uart.h"
 
-#include "bsp_function.hpp"
-#include "bsp_type_traits.hpp"
-#include "bsp_uncopyable.hpp"
+#include "function.hpp"
+#include "bsp_utility.hpp"
+#include "uncopyable.hpp"
 
 #include <cstddef>
 #include <cstdint>

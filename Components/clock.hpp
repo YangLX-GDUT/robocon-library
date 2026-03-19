@@ -1,5 +1,5 @@
-#ifndef BSP_CLOCK_HPP
-#define BSP_CLOCK_HPP
+#ifndef COMPONENTS_CLOCK_HPP
+#define COMPONENTS_CLOCK_HPP
 
 #include <chrono>
 #include <cmsis_os2.h>
@@ -72,4 +72,4 @@ static_assert(std::chrono::is_clock_v<steady_clock>);
 
 } // namespace gdut
 
-#endif // BSP_CLOCK_HPP
+#endif // COMPONENTS_CLOCK_HPP

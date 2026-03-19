@@ -1,4 +1,4 @@
-# BSP 互斥锁模块（bsp_mutex.hpp）
+# Async 互斥锁模块（mutex.hpp）
 
 ## 原理
 该模块基于 CMSIS-RTOS2 的 `osMutex` 提供 C++ RAII 互斥锁封装，确保临界区在异常或提前返回时仍能安全释放锁。支持递归互斥锁和优先级继承。
@@ -21,7 +21,7 @@
 
 ### 基础使用
 ```cpp
-#include "bsp_mutex.hpp"
+#include "mutex.hpp"
 
 gdut::mutex g_mtx;
 int g_shared_value = 0;
@@ -35,7 +35,7 @@ void critical_section() {
 
 ### 使用 RAII 自动锁管理（推荐）
 ```cpp
-#include "bsp_mutex.hpp"
+#include "mutex.hpp"
 #include <mutex>
 
 gdut::mutex g_mtx;
@@ -359,4 +359,4 @@ bool acquire_with_timeout(uint32_t timeout_ms) {
 }
 ```
 
-相关源码：[Middlewares/GDUT_RC_Library/BSP/bsp_mutex.hpp](../../Middlewares/GDUT_RC_Library/BSP/bsp_mutex.hpp)
+相关源码：[Middlewares/GDUT_RC_Library/Async/mutex.hpp](../../Middlewares/GDUT_RC_Library/Async/mutex.hpp)

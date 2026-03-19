@@ -1,10 +1,10 @@
 #ifndef GPIO_PIN_HPP
 #define GPIO_PIN_HPP
 
-#include "bsp_type_traits.hpp"
+#include "bsp_utility.hpp"
 #include "stm32f4xx_hal.h"
 
-#include "bsp_uncopyable.hpp"
+#include "uncopyable.hpp"
 
 namespace gdut {
 

@@ -1,7 +1,7 @@
-#ifndef BSP_SEMAPHORE_HPP
-#define BSP_SEMAPHORE_HPP
+#ifndef ASYNC_SEMAPHORE_HPP
+#define ASYNC_SEMAPHORE_HPP
 
-#include "bsp_type_traits.hpp"
+#include "../BSP/bsp_utility.hpp"
 #include <chrono>
 #include <cmsis_os2.h>
 #include <cstddef>
@@ -117,4 +117,4 @@ using binary_semaphore = counting_semaphore<1>;
 
 } // namespace gdut
 
-#endif // BSP_SEMAPHORE_HPP
+#endif // ASYNC_SEMAPHORE_HPP

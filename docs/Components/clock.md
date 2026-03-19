@@ -1,4 +1,4 @@
-# BSP 时钟模块（bsp_clock.hpp）
+# Components 时钟模块（clock.hpp）
 
 ## 原理
 该模块将 CMSIS-RTOS2 的系统节拍与系统计时器封装为 `std::chrono` 风格的时钟接口，便于在应用层使用统一的时间类型。
@@ -11,7 +11,7 @@
 ## 如何使用
 
 ```cpp
-#include "bsp_clock.hpp"
+#include "clock.hpp"
 
 void timing_demo() {
 	auto t0 = gdut::steady_clock::now();
@@ -35,4 +35,4 @@ void timing_demo() {
 - `system_clock` 可能被系统调整，不保证单调；测时请用 `steady_clock`。
 - tick 频率变化会影响时间换算，确保系统配置一致。
 
-相关源码：[Middlewares/GDUT_RC_Library/BSP/bsp_clock.hpp](../../Middlewares/GDUT_RC_Library/BSP/bsp_clock.hpp)
+相关源码：[Middlewares/GDUT_RC_Library/Components/clock.hpp](../../Middlewares/GDUT_RC_Library/Components/clock.hpp)

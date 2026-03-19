@@ -1,8 +1,8 @@
-#ifndef BSP_MEMORY_RESOURCE_HPP
-#define BSP_MEMORY_RESOURCE_HPP
+#ifndef COMPONENTS_MEMORY_RESOURCE_HPP
+#define COMPONENTS_MEMORY_RESOURCE_HPP
 
 #include "FreeRTOS.h"
-#include "bsp_mutex.hpp"
+#include "mutex.hpp"
 #include "tlsf.h"
 #include <cmsis_os2.h>
 #include <cstddef>
@@ -348,4 +348,4 @@ private:
 
 } // namespace gdut::pmr
 
-#endif // BSP_MEMORY_RESOURCE_HPP
+#endif // COMPONENTS_MEMORY_RESOURCE_HPP

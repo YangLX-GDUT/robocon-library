@@ -1,4 +1,4 @@
-# BSP 函数对象模块（bsp_function.hpp）
+# Components 函数对象模块（function.hpp）
 
 ## 原理
 该模块提供一个类型擦除的函数对象容器，类似标准库的 `std::function`，但支持自定义的存储大小和对齐要求，适合嵌入式系统的内存受限环境。避免堆分配，提供确定的内存占用，是实时系统和嵌入式开发的理想选择。
@@ -22,7 +22,7 @@
 
 ### 最简单的使用
 ```cpp
-#include "bsp_function.hpp"
+#include "function.hpp"
 
 // 定义一个回调类型：无参数、返回 void
 using callback_t = gdut::function<void()>;
@@ -605,4 +605,4 @@ using aligned_callback = gdut::basic_function<void(), 256, 32>;
 | 标准库兼容 | ❌ 否 | ✅ 是 |
 | 实时性保证 | ✅ 有 | ❌ 无 |
 
-相关源码：[Middlewares/GDUT_RC_Library/BSP/bsp_function.hpp](../../Middlewares/GDUT_RC_Library/BSP/bsp_function.hpp)
+相关源码：[Middlewares/GDUT_RC_Library/Components/function.hpp](../../Middlewares/GDUT_RC_Library/Components/function.hpp)

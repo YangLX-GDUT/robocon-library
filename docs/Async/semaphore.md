@@ -1,4 +1,4 @@
-# BSP 信号量模块（bsp_semaphore.hpp）
+# Async 信号量模块（semaphore.hpp）
 
 ## 原理
 该模块对 CMSIS-RTOS2 的计数信号量进行封装，提供 C++ 风格接口，并支持 `std::chrono` 超时参数。计数信号量可用于资源池管理、生产者-消费者同步、事件通知等场景。
@@ -25,7 +25,7 @@
 
 ### 基础使用
 ```cpp
-#include "bsp_semaphore.hpp"
+#include "semaphore.hpp"
 
 // 创建计数信号量，最大值 4，初始值 0
 gdut::counting_semaphore<4> sem(0);
@@ -434,4 +434,4 @@ void process_batch() {
 }
 ```
 
-相关源码：[Middlewares/GDUT_RC_Library/BSP/bsp_semaphore.hpp](../../Middlewares/GDUT_RC_Library/BSP/bsp_semaphore.hpp)
+相关源码：[Middlewares/GDUT_RC_Library/Async/semaphore.hpp](../../Middlewares/GDUT_RC_Library/Async/semaphore.hpp)

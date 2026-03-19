@@ -11,7 +11,7 @@
 #include <limits>
 #include <type_traits>
 
-namespace gdut::dsp {
+namespace gdut {
 
 template <typename T, std::size_t Rows, std::size_t Cols>
 struct redefine_matrix {};
@@ -556,6 +556,6 @@ inline constexpr matrix<T, 4, 4> make_rotate(const vector<T, 3> &vec,
   return res;
 }
 
-} // namespace gdut::dsp
+} // namespace gdut
 
 #endif // MATRIX_HPP

@@ -1,4 +1,4 @@
-# BSP 消息队列模块（bsp_message_queue.hpp）
+# Async 消息队列模块（message_queue.hpp）
 
 ## 原理
 该模块对 CMSIS-RTOS2 的消息队列（Message Queue）功能进行 C++ 模板包装，提供类型安全的任务间通讯机制。
@@ -21,7 +21,7 @@
 
 ### 基础使用
 ```cpp
-#include "bsp_message_queue.hpp"
+#include "message_queue.hpp"
 
 // 定义消息类型
 struct my_message {
@@ -260,4 +260,4 @@ static_assert(std::is_trivially_copyable_v<MessageType>,
 - 移动后的源对象不再持有队列资源
 - 接收操作会阻塞任务，若想异步处理应结合 `receive_from_isr()`
 
-相关源码：[Middlewares/GDUT_RC_Library/BSP/bsp_message_queue.hpp](../../Middlewares/GDUT_RC_Library/BSP/bsp_message_queue.hpp)
+相关源码：[Middlewares/GDUT_RC_Library/Async/message_queue.hpp](../../Middlewares/GDUT_RC_Library/Async/message_queue.hpp)

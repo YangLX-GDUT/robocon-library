@@ -1,7 +1,7 @@
-#ifndef BSP_FUNCTION_HPP
-#define BSP_FUNCTION_HPP
+#ifndef COMPONENTS_FUNCTION_HPP
+#define COMPONENTS_FUNCTION_HPP
 
-#include "bsp_type_traits.hpp"
+#include "utils_type_traits.hpp"
 #include <cstddef>
 #include <exception>
 #include <new>
@@ -150,4 +150,4 @@ using function = basic_function<Func, StorageSize, Alignment>;
 
 } // namespace gdut
 
-#endif // BSP_FUNCTION_HPP
+#endif // COMPONENTS_FUNCTION_HPP

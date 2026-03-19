@@ -1,9 +1,9 @@
-#ifndef BSP_THREAD_HPP
-#define BSP_THREAD_HPP
+#ifndef ASYNC_THREAD_HPP
+#define ASYNC_THREAD_HPP
 
-#include "bsp_memory_resource.hpp"
-#include "bsp_mutex.hpp"
-#include "bsp_type_traits.hpp"
+#include "memory_resource.hpp"
+#include "mutex.hpp"
+#include "../BSP/bsp_utility.hpp"
 #include <cmsis_os2.h>
 #include <cstddef>
 #include <memory>
@@ -215,4 +215,4 @@ private:
 
 } // namespace gdut
 
-#endif // BSP_THREAD_HPP
+#endif // ASYNC_THREAD_HPP

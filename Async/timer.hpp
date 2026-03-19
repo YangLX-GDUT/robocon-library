@@ -1,5 +1,5 @@
-#ifndef BSP_TIMER_HPP
-#define BSP_TIMER_HPP
+#ifndef ASYNC_TIMER_HPP
+#define ASYNC_TIMER_HPP
 
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_def.h"
@@ -462,4 +462,4 @@ private:
   timer_callbacks m_callbacks{};
 };
 } // namespace gdut
-#endif // BSP_TIMER_HPP
+#endif // ASYNC_TIMER_HPP

@@ -156,7 +156,7 @@ if (spi_dma.receive(buffer, sizeof(buffer))) {
 
 #### 结合 FreeRTOS 信号量实现同步
 ```cpp
-#include "bsp_semaphore.hpp"
+#include "semaphore.hpp"
 
 gdut::binary_semaphore spi_done_sem;  // 传输完成信号量
 

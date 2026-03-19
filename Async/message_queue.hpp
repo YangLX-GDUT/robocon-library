@@ -1,12 +1,12 @@
-#ifndef BSP_MESSAGE_QUEUE_HPP
-#define BSP_MESSAGE_QUEUE_HPP
+#ifndef ASYNC_MESSAGE_QUEUE_HPP
+#define ASYNC_MESSAGE_QUEUE_HPP
 
 #include <chrono>
 #include <cmsis_os2.h>
 #include <type_traits>
 #include <utility>
 
-#include "bsp_type_traits.hpp"
+#include "../BSP/bsp_utility.hpp"
 
 namespace gdut {
 
@@ -107,4 +107,4 @@ private:
 
 } // namespace gdut
 
-#endif // BSP_MESSAGE_QUEUE_HPP
+#endif // ASYNC_MESSAGE_QUEUE_HPP

@@ -1,5 +1,5 @@
-#ifndef BSP_UNCOPYABLE_HPP
-#define BSP_UNCOPYABLE_HPP
+#ifndef COMPONENTS_UNCOPYABLE_HPP
+#define COMPONENTS_UNCOPYABLE_HPP
 
 namespace gdut {
 
@@ -15,4 +15,4 @@ protected:
 
 } // namespace gdut
 
-#endif // BSP_UNCOPYABLE_HPP
+#endif // COMPONENTS_UNCOPYABLE_HPP
