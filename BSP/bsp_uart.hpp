@@ -7,8 +7,8 @@
 #include "stm32f4xx_hal_uart.h"
 
 #include "bsp_dma.hpp"
-#include "function.hpp"
 #include "bsp_utility.hpp"
+#include "function.hpp"
 #include "uncopyable.hpp"
 
 #include <chrono>

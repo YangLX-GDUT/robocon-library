@@ -144,7 +144,7 @@ private:
   alignas(Alignment) std::byte m_storage[StorageSize]{};
 };
 
-template <typename Func, std::size_t StorageSize = 16,
+template <typename Func, std::size_t StorageSize = 32,
           std::size_t Alignment = alignof(std::max_align_t)>
 using function = basic_function<Func, StorageSize, Alignment>;
 

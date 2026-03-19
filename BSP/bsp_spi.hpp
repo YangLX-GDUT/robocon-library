@@ -3,10 +3,10 @@
 
 #include "bsp_dma.hpp"
 #include "bsp_utility.hpp"
-#include "uncopyable.hpp"
 #include "cmsis_os2.h"
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_spi.h"
+#include "uncopyable.hpp"
 #include <chrono>
 #include <cstdint>
 

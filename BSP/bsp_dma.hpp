@@ -6,8 +6,8 @@
 #include "stm32f4xx_hal_i2c.h"
 #include "stm32f4xx_hal_uart.h"
 
-#include "function.hpp"
 #include "bsp_utility.hpp"
+#include "function.hpp"
 #include "uncopyable.hpp"
 
 #include <cstddef>

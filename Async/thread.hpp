@@ -1,9 +1,9 @@
 #ifndef ASYNC_THREAD_HPP
 #define ASYNC_THREAD_HPP
 
+#include "bsp_utility.hpp"
 #include "memory_resource.hpp"
 #include "mutex.hpp"
-#include "bsp_utility.hpp"
 #include <cmsis_os2.h>
 #include <cstddef>
 #include <memory>

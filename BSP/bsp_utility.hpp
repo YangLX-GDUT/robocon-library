@@ -1,15 +1,12 @@
 #ifndef BSP_UTILITY_HPP
 #define BSP_UTILITY_HPP
 
-#include "utils_type_traits.hpp"
 #include "stm32f407xx.h"
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_dma.h"
 #include <chrono>
 #include <cmsis_os2.h>
-#include <cstddef>
 #include <cstdint>
-#include <system_error>
 
 /**
  * @brief 将对象放置到核心耦合存储器（.ccmram）的属性
