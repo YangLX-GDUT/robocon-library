@@ -2,7 +2,7 @@
 #define BSP_IR_HPP
 
 #include "stm32f4xx_hal.h"
-#include "bsp_uncopyable.hpp"
+#include "Components/bsp_uncopyable.hpp"
 #include <array>
 #include <cstddef>  
 

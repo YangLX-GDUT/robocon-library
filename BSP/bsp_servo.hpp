@@ -3,8 +3,8 @@
 
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_tim.h"
-#include "bsp_function.hpp"
-#include "bsp_uncopyable.hpp"
+#include "Components/bsp_function.hpp"
+#include "Components/bsp_uncopyable.hpp"
 
 #include <cstdint>
 #include <functional>
